@@ -1,5 +1,3 @@
-<img width="1457" height="447" alt="image" src="https://github.com/user-attachments/assets/0f334fc0-b67d-4cae-9983-2f3b5a5ba62a" /># Bank_Dataset_Machine_Learning_Project
-
 ### Information
 The data is related to direct marketing campaign direct marketing campaigns of a Portuguese banking institution. The marketing campaigns were based on phone calls. Often, more than one contact to the same client was required, in order to access if the product (bank term deposit) would be ('yes') or not ('no') subscribed.
 bank-additional-full.csv with all examples (41188) and 20 inputs, ordered by date (from May 2008 to November 2010), very close to the data analyzed in [Moro et al., 2014]
