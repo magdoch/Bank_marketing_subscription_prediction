@@ -1,4 +1,4 @@
-# Bank_Dataset_Machine_Learning_Project
+<img width="1457" height="447" alt="image" src="https://github.com/user-attachments/assets/0f334fc0-b67d-4cae-9983-2f3b5a5ba62a" /># Bank_Dataset_Machine_Learning_Project
 
 ### Information
 The data is related to direct marketing campaign direct marketing campaigns of a Portuguese banking institution. The marketing campaigns were based on phone calls. Often, more than one contact to the same client was required, in order to access if the product (bank term deposit) would be ('yes') or not ('no') subscribed.
@@ -16,11 +16,41 @@ For this task, I am using a dataset that was originally published on the [UCI Ma
 
 ## 📊 Results
 
-We compare the performance of different machine learning models based on key evaluation metrics.
+A comparison of the performance of different machine learning models based on key evaluation metrics.
+## 📊 Model Comparison
 
-| 🤖 Model            | 📈 Train ROC-AUC | 📉 Test ROC-AUC | 🔁 Train F1 | 🔁 Test F1 | 🎯 Train Recall | 🎯 Test Recall | 🎯 Train Precision | 🎯 Test Precision |
-|--------------------|------------------|-----------------|-------------|------------|----------------|----------------|-------------------|------------------|
-| Logistic Regression | 0.79             | 0.80            | 0.45        | 0.46       | 0.63           | 0.65           | 0.35              | 0.36             |
-| kNN                | 0.92             | 0.74            | 0.48        | 0.38       | 0.29           | 0.29           | 0.56              | 0.56             |
-| Decision Tree      | 0.83             | 0.77            | 0.51        | 0.48       | 0.73           | 0.61           | 0.38              | 0.40             |
-| XGBoost            | 0.84             | 0.81            | 0.43        | 0.38       | 0.64           | 0.27           | 0.36              | 0.67             |
+| 🤖 Model                      | 📈 Train ROC-AUC | 📉 Test ROC-AUC | 🔁 Train F1 | 🔁 Test F1 | 🎯 Train Recall | 🎯 Test Recall | 🎯 Train Precision | 🎯 Test Precision | ⚠️ Overfitting |
+|-----------------------------|------------------|-----------------|-------------|------------|----------------|----------------|-------------------|------------------|----------------|
+| XGBoost                     | 0.84             | 0.81            | 0.43        | 0.38       | 0.31           | 0.27           | 0.76              | 0.68             | 0.03           |
+| Logistic Regression         | 0.79             | 0.80            | 0.45        | 0.47       | 0.62           | 0.65           | 0.35              | 0.36             | -0.01          |
+| Decision Tree               | 0.84             | 0.77            | 0.51        | 0.48       | 0.66           | 0.61           | 0.42              | 0.40             | 0.06           |
+| kNN                         | 0.93             | 0.74            | 0.49        | 0.38       | 0.38           | 0.29           | 0.70              | 0.56             | 0.18           |
+| Logistic Regression (Tuned) | 0.79             | 0.80            | 0.45        | 0.47       | 0.63           | 0.65           | 0.35              | 0.36             | -0.01          |
+| XGBoost (RandomizedSearch)  | 0.82             | 0.81            | 0.47        | 0.49       | 0.65           | 0.66           | 0.37              | 0.39             | 0.01           |
+| XGBoost (Hyperopt)          | 0.81             | 0.81            | 0.46        | 0.47       | 0.64           | 0.66           | 0.36              | 0.37             | 0.00           |
+
+
+
+##  Key Insights
+
+-  XGBoost (tuned) achieved the best overall ROC-AUC and balanced performance.
+-  Logistic Regression showed stable results and good generalization.
+-  kNN suffers from strong overfitting and is not recommended.
+-  Decision Tree shows moderate performance with slight overfitting.
+-  Hyperparameter tuning improved XGBoost performance and stability.
+## CONCLUSION
+In this project, a full machine learning pipeline for binary classification was developed, including exploratory data analysis, feature engineering, model training, evaluation, and interpretation.
+
+The exploratory data analysis revealed several important patterns. Customer behavior is strongly influenced by both individual characteristics and external economic conditions. Features such as previous campaign outcome, number of contacts, and macroeconomic indicators showed a clear relationship with the target variable.
+
+Several machine learning models were trained and evaluated, including Logistic Regression, k-Nearest Neighbors, Decision Tree, and XGBoost. Among them, XGBoost demonstrated the best performance in terms of ROC-AUC, while Logistic Regression provided more interpretable results.
+
+Hyperparameter tuning using Randomized Search and Bayesian Optimization (Hyperopt) further improved the performance of the boosting model. Both approaches produced similar results, confirming the robustness of the solution.
+
+Feature importance and SHAP analysis showed that macroeconomic variables (such as nr.employed, emp.var.rate, and euribor3m) have the strongest impact on predictions. Additionally, customer interaction features, such as previous campaign success and number of contacts, also play a significant role. 
+
+Error analysis revealed that the model struggles with borderline cases, particularly when there is limited historical information about the customer. It was also observed that excessive contact may negatively affect predictions, indicating potential customer fatigue.
+
+
+Overall, the developed model provides a reliable and interpretable solution for predicting customer subscription behavior and can be effectively used in real-world applications.
+
